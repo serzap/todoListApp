@@ -16,14 +16,20 @@
   <widget class="QLabel" name="label_TaskInfo">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>110</x>
      <y>60</y>
-     <width>47</width>
-     <height>13</height>
+     <width>171</width>
+     <height>20</height>
     </rect>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
    <property name="text">
-    <string>Task info</string>
+    <string>Enter a name for the task:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_TaskDescription">
@@ -46,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Done</string>
+    <string>Create</string>
    </property>
   </widget>
  </widget>

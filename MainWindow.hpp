@@ -20,8 +20,10 @@ public:
 
 public slots:
     void addNewTask(TaskInfo taskInfo);
+    void deleteSelected();
 private slots:
     void on_pushButton_NewTask_clicked();
+    void on_pushButton_DeleteTask_clicked();
 signals:
     void newTaskButtonClicked();
 

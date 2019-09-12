@@ -26,7 +26,21 @@ void MainWindow::on_pushButton_NewTask_clicked()
     mNewTaskWindow->show();
 }
 
+void MainWindow::on_pushButton_DeleteTask_clicked()
+{
+    this->deleteSelected();
+}
+
+void MainWindow::deleteSelected()
+{
+    QListWidgetItem *it = mUI->listWidget_Tasks->takeItem(mUI->listWidget_Tasks->currentRow());
+    delete it;
+}
+
 void MainWindow::addNewTask(TaskInfo taskInfo)
 {
-    mUI->listWidget_Tasks->addItem(taskInfo.getDescription());
+    QListWidgetItem *item = new QListWidgetItem(taskInfo.getDescription());
+    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+    item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default
+    mUI->listWidget_Tasks->addItem(item);
 }

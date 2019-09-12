@@ -17,11 +17,17 @@
    <widget class="QPushButton" name="pushButton_NewTask">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>290</y>
-      <width>91</width>
-      <height>23</height>
+      <x>60</x>
+      <y>250</y>
+      <width>120</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>30</height>
+     </size>
     </property>
     <property name="text">
      <string>New task</string>
@@ -37,6 +43,25 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_DeleteTask">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>250</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>Delete selected</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -44,7 +69,7 @@
      <x>0</x>
      <y>0</y>
      <width>417</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
