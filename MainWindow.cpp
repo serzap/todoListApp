@@ -23,7 +23,7 @@ QListWidgetItem *MainWindow::getListItem(const Task &task)
 
      item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
      item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default
-     //item->setForeground(Qt::red);
+     if (QDateTime::currentDateTime()>task.getDeadline()) item->setForeground(Qt::red);
      return item;
 }
 

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QDateTime>
 #include <QColor>
 #include <QCheckBox>
 #include <NewTaskWindow.hpp>

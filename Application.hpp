@@ -5,6 +5,7 @@
 #include "MainWindow.hpp"
 #include "NewTaskWindow.hpp"
 #include <QObject>
+#include <QTimer>
 
 class Application
 {

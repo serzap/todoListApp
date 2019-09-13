@@ -5,7 +5,9 @@ Application::Application() : mainWindow(new MainWindow()),
     newTaskWindow(new NewTaskWindow())
 {
     theHandler = TaskHandler::getInstance();
-
+    QTimer *timer = new QTimer(mainWindow);
+    QObject::connect(timer, &QTimer::timeout, mainWindow, [this]{ mainWindow->updateTaskList(theHandler->getTaskList()); });
+    timer->start(1000);
     QObject::connect(newTaskWindow, &NewTaskWindow::newTaskCreated,
                      theHandler, &TaskHandler::addNewTask);
     QObject::connect(theHandler, &TaskHandler::newTaskAdded,
