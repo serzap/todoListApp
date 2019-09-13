@@ -2,7 +2,7 @@
 #define NEWTASKWINDOW_HPP
 
 #include <QWidget>
-#include "CTask.hpp"
+#include "Task.hpp"
 
 namespace Ui {
 class NewTaskWindow;
@@ -17,14 +17,14 @@ public:
     ~NewTaskWindow();
 
 signals:
-    void newTaskCreated(CTask task);
+    void newTaskCreated(Task task);
 
 private slots:
     void on_pushButton_taskCreated_clicked();
 
 private:
     Ui::NewTaskWindow* mUI;
-    CTask mTaskInfo;
+    Task mTaskInfo;
 };
 
 #endif // NEWTASKWINDOW_HPP

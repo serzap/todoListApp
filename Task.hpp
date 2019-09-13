@@ -2,12 +2,13 @@
 #define CTASK_HPP
 
 #include <string>
+#include <QDateTime>
 
-class CTask
+class Task
 {
 public:
-    CTask();
-    CTask(std::string description);
+    Task();
+    Task(std::string description);
 
     bool getStatus() const;
     void setStatus(bool status);
@@ -15,9 +16,13 @@ public:
     std::string getDescription() const;
     void setDescription(const std::string &description);
 
+    QDateTime getDeadline() const;
+    void setDeadline(const QDateTime &deadline);
+
 private:
     std::string mDescription;
     bool mStatus;
+    QDateTime mDeadline;
 };
 
 

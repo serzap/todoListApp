@@ -17,6 +17,7 @@ void NewTaskWindow::on_pushButton_taskCreated_clicked()
 {
     QString description = mUI->lineEdit_TaskDescription->text();
     mTaskInfo.setDescription(description.toStdString());
+    mTaskInfo.setDeadline(mUI->dateTimeEdit->dateTime());
     mUI->lineEdit_TaskDescription->clear();
     this->close();
     emit newTaskCreated(mTaskInfo);
