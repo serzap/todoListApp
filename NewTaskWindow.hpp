@@ -17,7 +17,7 @@ public:
     ~NewTaskWindow();
 
 signals:
-    void newTaskCreated(Task task);
+    void newTaskCreated(const Task &task);
 
 private slots:
     void on_pushButton_taskCreated_clicked();

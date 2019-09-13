@@ -19,7 +19,7 @@ Application::Application() : mainWindow(new MainWindow()),
 
 Application::~Application()
 {
-    delete theHandler;
-    delete mainWindow;
-    delete newTaskWindow;
+    if (theHandler) delete theHandler;
+    if (mainWindow) delete mainWindow;
+    if (newTaskWindow) delete newTaskWindow;
 }

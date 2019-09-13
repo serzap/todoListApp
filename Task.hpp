@@ -1,28 +1,28 @@
 #ifndef CTASK_HPP
 #define CTASK_HPP
 
-#include <string>
+#include <QString>
 #include <QDateTime>
 
 class Task
 {
 public:
     Task();
-    Task(std::string description);
+    Task(QString description);
 
     bool getStatus() const;
     void setStatus(bool status);
 
-    std::string getDescription() const;
-    void setDescription(const std::string &description);
+    QString getDescription() const;
+    void setDescription(const QString &description);
 
     QDateTime getDeadline() const;
     void setDeadline(const QDateTime &deadline);
 
 private:
-    std::string mDescription;
-    bool mStatus;
+    QString mDescription;
     QDateTime mDeadline;
+    bool mStatus;
 };
 
 

@@ -13,7 +13,7 @@ TaskHandler *TaskHandler::getInstance()
     return theModel;
 }
 
-void TaskHandler::addNewTask(Task task){
+void TaskHandler::addNewTask(const Task &task){
 
     if (!theModel) theModel = new TaskHandler();
     theModel->mTaskList.push_back(task);

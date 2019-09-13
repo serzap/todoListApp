@@ -19,7 +19,7 @@ void MainWindow::on_pushButton_NewTask_clicked()
 
 QListWidgetItem *MainWindow::getListItem(const Task &task)
 {
-     QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(task.getDescription())+'\t'+task.getDeadline().toString("dd.MM.yyyy hh:mm"));
+     QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(task.getDescription().toStdString())+'\t'+task.getDeadline().toString("dd.MM.yyyy hh:mm"));
 
      item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
      item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default

@@ -6,7 +6,7 @@ Task::Task()
 
 }
 
-Task::Task(std::string description)
+Task::Task(QString description)
     : mDescription(description)
 {
 
@@ -22,12 +22,12 @@ void Task::setStatus(bool status)
     mStatus = status;
 }
 
-std::string Task::getDescription() const
+QString Task::getDescription() const
 {
     return mDescription;
 }
 
-void Task::setDescription(const std::string &description)
+void Task::setDescription(const QString &description)
 {
     mDescription = description;
 }

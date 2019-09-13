@@ -15,7 +15,7 @@ public:
     void setTaskList(const std::vector<Task> &taskList);
 
 public slots:
-    void addNewTask(Task task);
+    void addNewTask(const Task &task);
 
 
 signals:
