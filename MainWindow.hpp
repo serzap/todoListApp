@@ -20,7 +20,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    int currentRow();
 
 
 public slots:
@@ -28,11 +27,9 @@ public slots:
 
 private slots:
     void on_pushButton_NewTask_clicked();
-    void taskInfoClicked();
 
 signals:
     void newTaskButtonClicked();
-    void getTaskInfo();
 
 private:
     QListWidgetItem* getListItem(const Task & task);

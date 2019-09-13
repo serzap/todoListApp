@@ -13,15 +13,13 @@ public:
 
     std::vector<Task> getTaskList() const;
     void setTaskList(const std::vector<Task> &taskList);
-    const Task& getTask(int row);
 
 public slots:
     void addNewTask(const Task &task);
-    void deleteRow(int row);
 
 
 signals:
-    void needToBeUpdated(const std::vector<Task> &list);
+    void newTaskAdded(const std::vector<Task> &list);
 
 
 private:

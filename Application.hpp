@@ -4,7 +4,6 @@
 #include "TaskHandler.hpp"
 #include "MainWindow.hpp"
 #include "NewTaskWindow.hpp"
-#include "CurrentTaskWindow.hpp"
 #include <QObject>
 #include <QTimer>
 
@@ -17,7 +16,6 @@ private:
     TaskHandler * theHandler;
     MainWindow * mainWindow;
     NewTaskWindow * newTaskWindow;
-    CurrentTaskWindow * currentTaskWindow;
 };
 
 #endif // APPLICATION_HPP
