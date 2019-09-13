@@ -16,15 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    CModel.cpp \
+    CTask.cpp \
     NewTaskWindow.cpp \
-    TaskInfo.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
+    CModel.hpp \
+    CTask.hpp \
     MainWindow.hpp \
-    NewTaskWindow.hpp \
-    TaskInfo.hpp
+    NewTaskWindow.hpp
 
 FORMS += \
     MainWindow.ui \

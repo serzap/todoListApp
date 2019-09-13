@@ -37,9 +37,10 @@ void MainWindow::deleteSelected()
     delete it;
 }
 
-void MainWindow::addNewTask(TaskInfo taskInfo)
+void MainWindow::addNewTask(const CTask &task)
 {
-    QListWidgetItem *item = new QListWidgetItem(taskInfo.getDescription());
+
+    QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(task.getDescription()));
     item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
     item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default
     mUI->listWidget_Tasks->addItem(item);

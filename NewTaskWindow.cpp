@@ -16,7 +16,8 @@ NewTaskWindow::~NewTaskWindow()
 void NewTaskWindow::on_pushButton_taskCreated_clicked()
 {
     QString description = mUI->lineEdit_TaskDescription->text();
-    mTaskInfo.setDescription(description);
+    mTaskInfo.setDescription(description.toStdString());
+    mUI->lineEdit_TaskDescription->clear();
     this->close();
     emit newTaskCreated(mTaskInfo);
 }

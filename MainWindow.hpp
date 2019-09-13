@@ -2,6 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include <QString>
 #include <NewTaskWindow.hpp>
 
 QT_BEGIN_NAMESPACE
@@ -19,13 +20,15 @@ public:
     void addRelatedWindow(NewTaskWindow* related);
 
 public slots:
-    void addNewTask(TaskInfo taskInfo);
+    void addNewTask(const CTask &task);
     void deleteSelected();
+
 private slots:
     void on_pushButton_NewTask_clicked();
     void on_pushButton_DeleteTask_clicked();
+
 signals:
-    void newTaskButtonClicked();
+    void newTaskButtonClicked(std::string taskName);
 
 private:
     Ui::MainWindow* mUI;
