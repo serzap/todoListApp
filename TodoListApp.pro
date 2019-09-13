@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Application.cpp \
+    CurrentTaskWindow.cpp \
     NewTaskWindow.cpp \
     Task.cpp \
     TaskHandler.cpp \
@@ -25,12 +26,14 @@ SOURCES += \
 
 HEADERS += \
     Application.hpp \
+    CurrentTaskWindow.hpp \
     MainWindow.hpp \
     NewTaskWindow.hpp \
     Task.hpp \
     TaskHandler.hpp
 
 FORMS += \
+    CurrentTaskWindow.ui \
     MainWindow.ui \
     NewTaskWindow.ui
 

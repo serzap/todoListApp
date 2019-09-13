@@ -1,30 +1,36 @@
 #ifndef CURRENTTASKWINDOW_HPP
 #define CURRENTTASKWINDOW_HPP
 
-#include <QObject>
-#include <QWidget>
-#include "CTask.hpp"
+#include <QDialog>
+#include "Task.hpp"
 
 namespace Ui {
 class CurrentTaskWindow;
 }
 
-class CurrentTaskWindow : public QWidget
+class CurrentTaskWindow : public QDialog
 {
     Q_OBJECT
+
 public:
     explicit CurrentTaskWindow(QWidget *parent = nullptr);
     ~CurrentTaskWindow();
 
-signals:
-    void taskToBeDeleted(CTask task);
+public slots:
+    void initializeWith(const Task & task);
 
 private slots:
-    void on_pushButton_toBeDeleted_clicked();
+    void on_pushButton_Back_clicked();
+    void on_pushButton_Save_clicked();
+    void on_pushButton_Delete_clicked();
+
+signals:
+    void itemToBeDeleted();
+    void itemToBeAdded(const Task & task);
+    void returnToMain();
 
 private:
-    Ui::CurrentTaskWindow* mUI;
-    CTask mTask;
+    Ui::CurrentTaskWindow *ui;
 };
 
 #endif // CURRENTTASKWINDOW_HPP

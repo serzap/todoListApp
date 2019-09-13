@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget* parent)
     , mUI(new Ui::MainWindow)
 {
     mUI->setupUi(this);
+    QObject::connect(mUI->listWidget_Tasks, &QListWidget::itemClicked, this, &MainWindow::taskInfoClicked);
 }
 
 MainWindow::~MainWindow()
@@ -12,10 +13,21 @@ MainWindow::~MainWindow()
     delete mUI;
 }
 
+int MainWindow::currentRow()
+{
+    return mUI->listWidget_Tasks->currentRow();
+}
+
 void MainWindow::on_pushButton_NewTask_clicked()
 {
     emit newTaskButtonClicked();
 }
+
+void MainWindow::taskInfoClicked()
+{
+    emit getTaskInfo();
+}
+
 
 QListWidgetItem *MainWindow::getListItem(const Task &task)
 {
