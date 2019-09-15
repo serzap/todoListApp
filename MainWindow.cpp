@@ -1,4 +1,5 @@
 #include "MainWindow.hpp"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -17,20 +18,25 @@ void MainWindow::on_pushButton_NewTask_clicked()
     emit newTaskButtonClicked();
 }
 
-QListWidgetItem *MainWindow::getListItem(const Task &task)
-{
-     QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(task.getDescription().toStdString())+'\t'+task.getDeadline().toString("dd.MM.yyyy hh:mm"));
-
-     item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-     item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default
-     if (QDateTime::currentDateTime()>task.getDeadline()) item->setForeground(Qt::red);
-     return item;
-}
-
-void MainWindow::updateTaskList(const std::vector<Task> &list)
+void MainWindow::updateTaskList(const std::vector<Task>& list)
 {
     mUI->listWidget_Tasks->clear();
-    for (auto task = list.begin(); task != list.end(); task++) {
-        mUI->listWidget_Tasks->addItem(getListItem(*task));
+    for (auto task = list.begin(); task != list.end(); task++)
+    {
+        qDebug() << "update task " << task->getDescription();
+        updateTask(*task);
     }
+}
+
+void MainWindow::updateTask(const Task& task)
+{
+    QString itemInfo = QString(task.getDescription()+'\t' + task.getDeadline().toString("dd.MM.yyyy hh:mm"));
+    QListWidgetItem* item = new QListWidgetItem(itemInfo);
+    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+    item->setCheckState(Qt::Unchecked);
+    if (QDateTime::currentDateTime() > task.getDeadline())
+    {
+        item->setForeground(Qt::red);
+    }
+    mUI->listWidget_Tasks->addItem(item);
 }

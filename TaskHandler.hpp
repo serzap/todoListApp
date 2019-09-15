@@ -8,23 +8,25 @@ class TaskHandler : public QObject
 {
     Q_OBJECT
 public:
-    TaskHandler();
-    static TaskHandler *getInstance();
+    static TaskHandler& getInstance();
 
-    std::vector<Task> getTaskList() const;
-    void setTaskList(const std::vector<Task> &taskList);
+    TaskHandler(const TaskHandler&) = delete;
+    void operator=(const TaskHandler&) = delete;
+
+    const std::vector<Task>& getTaskList() const;
+    void setTaskList(const std::vector<Task>& taskList);
+
+private:
+    TaskHandler(){}
 
 public slots:
     void addNewTask(const Task &task);
 
-
 signals:
     void newTaskAdded(const std::vector<Task> &list);
 
-
 private:
     std::vector<Task> mTaskList;
-    static TaskHandler *theModel;  //TaskHandler implements singleton pattern
 };
 
 #endif // TASKHANDLER_HPP

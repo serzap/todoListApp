@@ -1,27 +1,25 @@
 #include "Application.hpp"
 
-
-Application::Application() : mainWindow(new MainWindow()),
-    newTaskWindow(new NewTaskWindow())
+Application::Application()
+    : mTaskHandler(TaskHandler::getInstance())
+    , mMainWindow()
+    , mNewTaskWindow()
 {
-    theHandler = TaskHandler::getInstance();
-    QTimer *timer = new QTimer(mainWindow);
-    QObject::connect(timer, &QTimer::timeout, mainWindow, [this]{ mainWindow->updateTaskList(theHandler->getTaskList()); });
-    timer->start(1000);
-    QObject::connect(newTaskWindow, &NewTaskWindow::newTaskCreated,
-                     theHandler, &TaskHandler::addNewTask);
-    QObject::connect(theHandler, &TaskHandler::newTaskAdded,
-                     mainWindow, &MainWindow::updateTaskList);
-    QObject::connect(newTaskWindow, &NewTaskWindow::newTaskCreated,
-                     mainWindow, &MainWindow::show);
-    QObject::connect(mainWindow, &MainWindow::newTaskButtonClicked,
-                     newTaskWindow, &NewTaskWindow::show);
-    mainWindow->show();
+    QTimer timer(&mMainWindow);
+    QObject::connect(&timer, &QTimer::timeout, &mMainWindow, [this]{ mMainWindow.updateTaskList(mTaskHandler.getTaskList()); });
+    timer.start(1000);
+    QObject::connect(&mNewTaskWindow, &NewTaskWindow::newTaskCreated,
+                     &mTaskHandler, &TaskHandler::addNewTask);
+    QObject::connect(&mTaskHandler, &TaskHandler::newTaskAdded,
+                     &mMainWindow, &MainWindow::updateTaskList);
+    QObject::connect(&mNewTaskWindow, &NewTaskWindow::newTaskCreated,
+                     &mMainWindow, &MainWindow::show);
+    QObject::connect(&mMainWindow, &MainWindow::newTaskButtonClicked,
+                     &mNewTaskWindow, &NewTaskWindow::show);
+    mMainWindow.show();
 }
 
 Application::~Application()
 {
-    if (theHandler) delete theHandler;
-    if (mainWindow) delete mainWindow;
-    if (newTaskWindow) delete newTaskWindow;
+
 }

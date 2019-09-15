@@ -4,9 +4,7 @@
 #include <QWidget>
 #include "Task.hpp"
 
-namespace Ui {
-class NewTaskWindow;
-}
+namespace Ui {class NewTaskWindow;}
 
 class NewTaskWindow : public QWidget
 {
@@ -17,7 +15,7 @@ public:
     ~NewTaskWindow();
 
 signals:
-    void newTaskCreated(const Task &task);
+    void newTaskCreated(const Task& task);
 
 private slots:
     void on_pushButton_taskCreated_clicked();

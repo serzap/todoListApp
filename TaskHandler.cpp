@@ -1,26 +1,18 @@
 #include "TaskHandler.hpp"
 
-TaskHandler *TaskHandler::theModel = nullptr;
-
-TaskHandler::TaskHandler()
+TaskHandler& TaskHandler::getInstance()
 {
-
+    static TaskHandler instance;
+    return instance;
 }
 
-TaskHandler *TaskHandler::getInstance()
+void TaskHandler::addNewTask(const Task& task)
 {
-    if (!theModel) theModel = new TaskHandler();
-    return theModel;
+    mTaskList.push_back(task);
+    emit newTaskAdded(mTaskList);
 }
 
-void TaskHandler::addNewTask(const Task &task){
-
-    if (!theModel) theModel = new TaskHandler();
-    theModel->mTaskList.push_back(task);
-    emit newTaskAdded(theModel->getTaskList());
-}
-
-std::vector<Task> TaskHandler::getTaskList() const
+const std::vector<Task>& TaskHandler::getTaskList() const
 {
     return mTaskList;
 }

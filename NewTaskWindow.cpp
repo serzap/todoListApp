@@ -1,9 +1,10 @@
 #include "NewTaskWindow.hpp"
 #include "ui_NewTaskWindow.h"
 
-NewTaskWindow::NewTaskWindow(QWidget* parent) :
-    QWidget(parent),
-    mUI(new Ui::NewTaskWindow)
+NewTaskWindow::NewTaskWindow(QWidget* parent)
+    : QWidget(parent)
+    , mUI(new Ui::NewTaskWindow)
+    , mTaskInfo()
 {
     mUI->setupUi(this);
 }

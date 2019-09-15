@@ -13,9 +13,9 @@ public:
     Application();
     ~Application();
 private:
-    TaskHandler * theHandler;
-    MainWindow * mainWindow;
-    NewTaskWindow * newTaskWindow;
+    TaskHandler& mTaskHandler;
+    MainWindow mMainWindow;
+    NewTaskWindow mNewTaskWindow;
 };
 
 #endif // APPLICATION_HPP

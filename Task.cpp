@@ -1,13 +1,18 @@
 #include "Task.hpp"
 
+
+int Task::ID = 0;
+
 Task::Task()
-    : mDescription("")
+    : mCurrentId(ID++)
+    , mDescription("")
 {
 
 }
 
-Task::Task(QString description)
-    : mDescription(description)
+Task::Task(const QString& description)
+    : mCurrentId(ID++)
+    , mDescription(description)
 {
 
 }
@@ -22,7 +27,7 @@ void Task::setStatus(bool status)
     mStatus = status;
 }
 
-QString Task::getDescription() const
+const QString& Task::getDescription() const
 {
     return mDescription;
 }
@@ -32,12 +37,12 @@ void Task::setDescription(const QString &description)
     mDescription = description;
 }
 
-QDateTime Task::getDeadline() const
+const QDateTime& Task::getDeadline() const
 {
     return mDeadline;
 }
 
-void Task::setDeadline(const QDateTime &deadline)
+void Task::setDeadline(const QDateTime& deadline)
 {
     mDeadline = deadline;
 }

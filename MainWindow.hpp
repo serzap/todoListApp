@@ -21,9 +21,9 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-
 public slots:
-    void updateTaskList(const std::vector<Task> &list);
+    void updateTaskList(const std::vector<Task>& list);
+    void updateTask(const Task& task);
 
 private slots:
     void on_pushButton_NewTask_clicked();
@@ -32,7 +32,7 @@ signals:
     void newTaskButtonClicked();
 
 private:
-    QListWidgetItem* getListItem(const Task & task);
+    QListWidgetItem* getListItem(const Task& task);
     Ui::MainWindow* mUI;
 };
 #endif // MAINWINDOW_HPP
