@@ -2,6 +2,7 @@
 
 Application::Application()
     : mTaskHandler(TaskHandler::getInstance())
+    , mLogger(Logger::getInstance())
     , mMainWindow()
     , mNewTaskWindow()
 {

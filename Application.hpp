@@ -2,6 +2,7 @@
 #define APPLICATION_HPP
 
 #include "TaskHandler.hpp"
+#include "Logger.hpp"
 #include "MainWindow.hpp"
 #include "NewTaskWindow.hpp"
 #include <QObject>
@@ -14,6 +15,7 @@ public:
     ~Application();
 private:
     TaskHandler& mTaskHandler;
+    Logger& mLogger;
     MainWindow mMainWindow;
     NewTaskWindow mNewTaskWindow;
 };
