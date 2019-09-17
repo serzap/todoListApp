@@ -2,7 +2,12 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include <QString>
+#include <QDateTime>
+#include <QColor>
+#include <QCheckBox>
 #include <NewTaskWindow.hpp>
+#include "ui_MainWindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,19 +21,18 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-    void addRelatedWindow(NewTaskWindow* related);
-
 public slots:
-    void addNewTask(TaskInfo taskInfo);
-    void deleteSelected();
+    void updateTaskList(const std::vector<Task>& list);
+    void updateTask(const Task& task);
+
 private slots:
     void on_pushButton_NewTask_clicked();
-    void on_pushButton_DeleteTask_clicked();
+
 signals:
     void newTaskButtonClicked();
 
 private:
+    QListWidgetItem* getListItem(const Task& task);
     Ui::MainWindow* mUI;
-    NewTaskWindow* mNewTaskWindow;
 };
 #endif // MAINWINDOW_HPP

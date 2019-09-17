@@ -1,46 +1,52 @@
 #include "MainWindow.hpp"
-#include "ui_MainWindow.h"
+#include <QDebug>
+#include "Logger.hpp"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , mUI(new Ui::MainWindow)
 {
+    qDebug(logUI()) << Q_FUNC_INFO;
+
     mUI->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
-    delete mUI;
-    delete mNewTaskWindow;
-}
+    qDebug(logUI()) << Q_FUNC_INFO;
 
-void MainWindow::addRelatedWindow(NewTaskWindow* related)
-{
-    mNewTaskWindow = related;
-    QObject::connect(mNewTaskWindow, &NewTaskWindow::newTaskCreated,
-                     this, &MainWindow::show);
+    delete mUI;
 }
 
 void MainWindow::on_pushButton_NewTask_clicked()
 {
-    mNewTaskWindow->show();
+    qDebug(logUI()) << Q_FUNC_INFO;
+
+    emit newTaskButtonClicked();
 }
 
-void MainWindow::on_pushButton_DeleteTask_clicked()
+void MainWindow::updateTaskList(const std::vector<Task>& list)
 {
-    this->deleteSelected();
+    qDebug(logUI()) << Q_FUNC_INFO;
+
+    mUI->listWidget_Tasks->clear();
+    for (auto task = list.begin(); task != list.end(); task++)
+    {
+        updateTask(*task);
+    }
 }
 
-void MainWindow::deleteSelected()
+void MainWindow::updateTask(const Task& task)
 {
-    QListWidgetItem *it = mUI->listWidget_Tasks->takeItem(mUI->listWidget_Tasks->currentRow());
-    delete it;
-}
+    qDebug(logUI()) << Q_FUNC_INFO;
 
-void MainWindow::addNewTask(TaskInfo taskInfo)
-{
-    QListWidgetItem *item = new QListWidgetItem(taskInfo.getDescription());
+    QString itemInfo = QString(task.getDescription()+'\t' + task.getDeadline().toString("dd.MM.yyyy hh:mm"));
+    QListWidgetItem* item = new QListWidgetItem(itemInfo);
     item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-    item->setCheckState(Qt::Unchecked); // Creating task has unchecked state by default
+    item->setCheckState(Qt::Unchecked);
+    if (QDateTime::currentDateTime() > task.getDeadline())
+    {
+        item->setForeground(Qt::red);
+    }
     mUI->listWidget_Tasks->addItem(item);
 }
